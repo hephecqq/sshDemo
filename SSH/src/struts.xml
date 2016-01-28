@@ -21,15 +21,8 @@
         </global-exception-mappings>
 
         <action name="index">
-            <result type="redirectAction">
-                <param name="actionName">HelloWorld</param>
-                <param name="namespace">/example</param>
-            </result>
+            <result type="redirectAction">/WEB-INF/views/index.jsp</result>
         </action>
     </package>
-
-    <include file="example.xml"/>
-
-    <!-- Add packages here -->
 
 </struts>
