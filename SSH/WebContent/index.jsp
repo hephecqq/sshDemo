@@ -9,5 +9,8 @@
 </head>
 <body>
 <jsp:forward page="WEB-INF/views/index.jsp"></jsp:forward>
+<%
+	out.println("hello world");
+%>
 </body>
 </html>
