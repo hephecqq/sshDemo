@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-30 14:41:31 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.kostech.beans.Grade" table="GRADE">
+        <id name="gid" type="java.lang.Integer">
+            <column name="GID" />
+            <generator class="assigned" />
+        </id>
+        <property name="gname" type="java.lang.String">
+            <column name="GNAME" />
+        </property>
+        <property name="desc" type="java.lang.String">
+            <column name="DESC" />
+        </property>
+        <set name="stus" table="STUDENT" inverse="false" lazy="true">
+            <key>
+                <column name="GID" />
+            </key>
+            <one-to-many class="com.kostech.beans.Student" />
+        </set>
+    </class>
+</hibernate-mapping>

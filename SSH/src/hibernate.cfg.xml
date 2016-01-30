@@ -29,5 +29,7 @@
 		<mapping resource="com/kostech/beans/Customer.hbm.xml"/>
 		<mapping resource="com/kostech/beans/Address.hbm.xml"/>
 		<mapping resource="com/kostech/beans/Shopping.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Student.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Grade.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
