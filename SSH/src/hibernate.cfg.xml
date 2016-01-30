@@ -8,7 +8,9 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">123456</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql:///test</property>
+		<property name="connection.url"><![CDATA[
+			jdbc:mysql:///test?useUnicode=true&characterEncoding=utf8
+		]]></property>
 		
 		<!-- 配置 hibernate 的基本信息 -->
 		<!-- hibernate 所使用的数据库方言 -->
@@ -21,8 +23,11 @@
 		<property name="format_sql">true</property>
 	
 		<!-- 指定自动生成数据表的策略 -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		
 		<mapping resource="com/kostech/beans/User.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Customer.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Address.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Shopping.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

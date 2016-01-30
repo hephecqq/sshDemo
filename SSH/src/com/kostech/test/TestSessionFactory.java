@@ -8,18 +8,14 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.Test;
 
-import com.opensymphony.xwork2.interceptor.annotations.Before;
 
 public class TestSessionFactory {
 
 	
-	@SuppressWarnings("deprecation")
-	@Before
-	public void before(){
-		
-	}
+	
 	@Test
 	public void test(){
+		@SuppressWarnings("unused")
 		final ThreadLocal<Session> threadLocal=new ThreadLocal<Session>();
 		final Configuration cfg=new Configuration().configure();
 		SessionFactory sessionFactory=null;

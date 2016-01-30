@@ -3,19 +3,20 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-1-30 13:04:00 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kostech.beans.User" table="USER">
+    <class name="com.kostech.beans.Customer" table="CUSTOMER">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />
         </id>
-        <property name="password" type="java.lang.String">
-            <column name="PASSWORD" />
+        <property name="cname" type="java.lang.String">
+            <column name="CNAME" />
         </property>
-        <property name="email" type="java.lang.String">
-            <column name="EMAIL" />
-        </property>
-        <property name="username" type="java.lang.String">
-            <column name="USERNAME" />
-        </property>
+        <list name="address" inverse="false" table="ADDRESS" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.kostech.beans.Address" />
+        </list>
     </class>
 </hibernate-mapping>
