@@ -4,6 +4,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.kostech.constant.ReConst;
 
@@ -11,9 +13,9 @@ public class HibernateSessionFactory {
 
 	//private static String CONFIG_FILE_LOCATION="/hibernate.cfg.xml";
 	private static final ThreadLocal<Session> threadLocal=new ThreadLocal<Session>();
-	private static final Configuration cfg=new Configuration();
+	private static final Configuration cfg=new Configuration().configure();
 	private static SessionFactory sessionFactory=null;
-	
+	private static ServiceRegistry serviceRegistry=null;
 	//È¡µÃsession
 	@SuppressWarnings("deprecation")
 	public static Session currentSession() throws HibernateException{
@@ -21,8 +23,10 @@ public class HibernateSessionFactory {
 		if(session==null){
 			if(sessionFactory==null){
 				try{
-					cfg.configure(ReConst.CONFIG_FILE_LOCATION);
-					sessionFactory=cfg.buildSessionFactory();
+					serviceRegistry = 
+							new ServiceRegistryBuilder().applySettings(cfg.getProperties())
+							                            .buildServiceRegistry();
+					sessionFactory = cfg.buildSessionFactory(serviceRegistry);
 				}catch(Exception e){
 					System.out.println("Error Creating SessionFactory");
 					e.printStackTrace();
