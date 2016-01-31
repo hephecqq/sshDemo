@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-1-30 14:41:31 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-1-30 14:18:11 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kostech.beans.Grade" table="GRADE">
         <id name="gid" type="java.lang.Integer">
             <column name="GID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="gname" type="java.lang.String">
             <column name="GNAME" />
@@ -14,9 +14,10 @@
         <property name="desc" type="java.lang.String">
             <column name="DESC" />
         </property>
-        <set name="stus" table="STUDENT" inverse="false" lazy="true">
+        <!-- 配置单向一对多关联关系 -->
+        <set name="stus" table="STUDENT">
             <key>
-                <column name="GID" />
+                <column name="G_ID" />
             </key>
             <one-to-many class="com.kostech.beans.Student" />
         </set>

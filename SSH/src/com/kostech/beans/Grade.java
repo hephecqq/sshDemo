@@ -11,6 +11,16 @@ public class Grade implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public Grade() {
+		super();
+	}
+	public Grade(Integer gid, String gname, String desc, Set<Student> stus) {
+		super();
+		this.gid = gid;
+		this.gname = gname;
+		this.desc = desc;
+		this.stus = stus;
+	}
 	private Integer gid;
 	private String gname;
 	private String desc ;

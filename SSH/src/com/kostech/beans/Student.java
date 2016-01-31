@@ -34,6 +34,16 @@ public class Student implements Serializable{
 	}
 
 	private Integer sid;
+	public Student() {
+		super();
+	}
+	public Student(Integer sid, String sname, String sex) {
+		super();
+		this.sid = sid;
+		this.sname = sname;
+		this.sex = sex;
+	}
+
 	private String sname;
 	private String  sex;
 }
