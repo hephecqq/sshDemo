@@ -22,7 +22,25 @@
 		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
-<bean id="helloWorld" class="com.kostech.spring.test.HelloWorld">
-	<property name="name" value="hepeng"></property>
-</bean>
+
+		<!-- 配置HelloWorld Bean -->
+		<bean id="helloWorld" class="com.kostech.spring.test.HelloWorld" scope="singleton">
+			<property name="name" value="hepeng"></property>
+		</bean>
+		
+		<!-- 配置User Bean -->
+		<bean id="user" class="com.kostech.spring.test.User">
+			<property name="id" value="1001"></property>
+			<property name="name" value="zhangsan"></property>
+			<property name="desc" value="好人"></property>
+		</bean>
+		
+		<!-- 配置UserDAO Bean-->
+		<bean id="userDao" class="com.kostech.spring.test.UserDao"></bean>
+		
+		<!-- 配置UserManager Bean -->
+		<bean id="userManager" class="com.kostech.spring.test.UserManager">
+			<property name="userDao" ref="userDao"></property>
+		</bean>
+		
 </beans>

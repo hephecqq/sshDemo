@@ -9,7 +9,7 @@
 		<property name="connection.password">123456</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url"><![CDATA[
-			jdbc:mysql:///test?useUnicode=true&characterEncoding=utf8
+			jdbc:mysql:///webshop?useUnicode=true&characterEncoding=utf8
 		]]></property>
 		
 		<!-- 配置 hibernate 的基本信息 -->
