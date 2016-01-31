@@ -43,4 +43,61 @@
 			<property name="userDao" ref="userDao"></property>
 		</bean>
 		
+		<!-- 注入Data数据类型测试 -->
+		<bean id="birthday" class="java.util.Date"></bean>
+		<bean id="data" class="com.kostech.spring.test.Data">
+			<property name="id" value="1002"></property>
+			<property name="name" value="李四"></property>
+			<property name="birthday" ref="birthday"></property>
+			
+			<!-- 配置数组 -->
+			<property name="array">
+				<array>
+					<value>a1</value>
+					<value>a2</value>
+					<value>a3</value>
+					<value>a4</value>
+				</array>
+			</property>
+			
+			<!-- 配置List -->
+			<property name="list">
+				<list>
+					<value>l1</value>
+					<value>l2</value>
+					<value>l3</value>
+					<value>l4</value>
+				</list>
+			</property>
+			
+			<!-- 配置Set -->
+			<property name="set">
+				<set>
+					<value>s1</value>
+					<value>s2</value>
+					<value>s3</value>
+					<value>s4</value>
+				</set>
+			</property>
+			
+			<!-- 配置Map -->
+			<property name="map">
+				<map>
+					<entry key="k1" value="v1"></entry>
+					<entry key="k2" value="v2"></entry>
+					<entry key="k3" value="v3"></entry>
+				</map>
+			</property>
+			
+			<!-- 配置Properties -->
+			<property name="prop">
+				<props>
+					<prop key="p1">v1</prop>
+					<prop key="p2">v2</prop>
+					<prop key="p3">v3</prop>
+					<prop key="p4">v4</prop>
+				</props>
+			</property>
+		</bean>
+		
 </beans>
