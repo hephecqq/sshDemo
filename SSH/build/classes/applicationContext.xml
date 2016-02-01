@@ -44,7 +44,7 @@
 		</bean>
 		
 		<!-- 注入Data数据类型测试 -->
-		<bean id="birthday" class="java.util.Date"></bean>
+		<bean id="birthday" class="java.util.Date" scope="singleton"></bean>
 		<bean id="data" class="com.kostech.spring.test.Data">
 			<property name="id" value="1002"></property>
 			<property name="name" value="李四"></property>
@@ -110,4 +110,5 @@
 		<bean id="umi2" class="com.kostech.spring.test.UserManagerImpl2">
 			<constructor-arg ref="ud2"></constructor-arg>
 		</bean>
+		
 </beans>

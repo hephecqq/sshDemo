@@ -11,6 +11,7 @@
 		<property name="connection.url"><![CDATA[
 			jdbc:mysql:///webshop?useUnicode=true&characterEncoding=utf8
 		]]></property>
+		<!-- 配置数据源 -->
 		
 		<!-- 配置 hibernate 的基本信息 -->
 		<!-- hibernate 所使用的数据库方言 -->
