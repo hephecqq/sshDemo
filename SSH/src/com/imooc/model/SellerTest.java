@@ -73,7 +73,7 @@ public class SellerTest {
 	
 	@Test
 	public void testFromClause(){
-		String hql = " from Seller  s ";
+		String hql = "from Seller s ";
 		
 		Query query = session.createQuery(hql);
 		

@@ -12,6 +12,10 @@ import java.util.Set;
  * 
  */
 public class Order implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;// 主键
 	private Customer customer;// 客户
 	private Date tradeDate;// 交易日期

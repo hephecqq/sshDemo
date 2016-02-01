@@ -9,6 +9,10 @@ import java.io.Serializable;
  * 
  */
 public class Commodity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;// 主键
 	private String name;// 名称
 	private Double price;// 价格

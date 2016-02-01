@@ -2,12 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.imooc.model.Order" table="ORDERFORM">
+	<class name="com.kostech.hibernate.test.Order" table="ORDERFORM">
 		<id name="id" type="java.lang.Long">
 			<column name="ID" />
-			<generator class="increment" />
+			<generator class="native" />
 		</id>
-		<many-to-one name="customer" class="com.imooc.model.Customer"
+		<many-to-one name="customer" class="com.kostech.hibernate.test.Customer"
 			fetch="join">
 			<column name="CUSTOMER" />
 		</many-to-one>
@@ -25,7 +25,7 @@
 			<key>
 				<column name="ORDERID" />
 			</key>
-			<one-to-many class="com.imooc.model.OrderItem" />
+			<one-to-many class="com.kostech.hibernate.test.OrderItem" />
 		</set>
 	</class>
 </hibernate-mapping>

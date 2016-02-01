@@ -9,6 +9,10 @@ import java.io.Serializable;
  * 
  */
 public class OrderItem implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;// 主键
 	private Order order;
 	private Commodity commodity;// 订单商品
