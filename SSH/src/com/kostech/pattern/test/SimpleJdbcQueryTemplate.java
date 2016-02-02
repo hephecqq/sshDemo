@@ -17,6 +17,7 @@ public class SimpleJdbcQueryTemplate {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		return null;
 	}
 	private Connection getConnection() {
