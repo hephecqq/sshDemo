@@ -39,6 +39,8 @@
 		<mapping resource="com/kostech/hibernate/test/Order.hbm.xml"/>
 		<mapping resource="com/kostech/hibernate/test/OrderItem.hbm.xml"/>
 		<mapping resource="com/kostech/hibernate/test/Commodity.hbm.xml"/>
-		<mapping resource="com/kostech/hibernate/test/Customer.hbm.xml"/>	
+		<mapping resource="com/kostech/hibernate/test/Customer.hbm.xml"/>
+		<mapping resource="com/kostech/beans/Type.hbm.xml"/>
+		<mapping resource="com/kostech/beans/News.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:c="http://www.springframework.org/schema/c"
-	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:cache="http://www.springframework.org/schema/cache"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:jms="http://www.springframework.org/schema/jms"
-	xmlns:lang="http://www.springframework.org/schema/lang"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
@@ -23,118 +18,129 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-		
-		<!-- 引入外部的属性文件 -->
-		<context:property-placeholder location="classpath:jdbc.properties"/>
-		
-		<!-- 配置C3P0数据源 -->
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-			<property name="jdbcUrl" value="${jdbcUrl}"></property>
-			<property name="user" value="${user}"></property>
-			<property name="password" value="${password}"></property>
-			<property name="driverClass" value="${driverClass}"></property>
-		</bean>
-		
-		
-		<!-- 配置事务管理器 -->
-		
-		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-			<property name="dataSource" ref="dataSource"></property>
-		</bean>
-		
-		<!-- 定义事务管理的模板 -->
-		<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-			<!-- 配置属性 -->
-			<property name="transactionManager" ref="transactionManager"></property>
-			<property name="timeout" value="2000"></property>
-		</bean>
-		
-		<!-- 配置HelloWorld Bean -->
-		<bean id="helloWorld" class="com.kostech.spring.test.HelloWorld" scope="singleton">
-			<property name="name" value="hepeng"></property>
-		</bean>
-		
-		<!-- 配置User Bean -->
-		<bean id="user" class="com.kostech.spring.test.User">
-			<property name="id" value="1001"></property>
-			<property name="name" value="zhangsan"></property>
-			<property name="desc" value="好人"></property>
-		</bean>
-		
-		<!-- 配置UserDAO Bean-->
-		<bean id="userDao" class="com.kostech.spring.test.UserDao"></bean>
-		
-		<!-- 配置UserManager Bean -->
-		<bean id="userManager" class="com.kostech.spring.test.UserManager">
-			<property name="userDao" ref="userDao"></property>
-		</bean>
-		
-		<!-- 注入Data数据类型测试 -->
-		<bean id="birthday" class="java.util.Date" scope="singleton"></bean>
-		<bean id="data" class="com.kostech.spring.test.Data">
-			<property name="id" value="1002"></property>
-			<property name="name" value="李四"></property>
-			<property name="birthday" ref="birthday"></property>
-			
-			<!-- 配置数组 -->
-			<property name="array">
-				<array>
-					<value>a1</value>
-					<value>a2</value>
-					<value>a3</value>
-					<value>a4</value>
-				</array>
-			</property>
-			
-			<!-- 配置List -->
-			<property name="list">
-				<list>
-					<value>l1</value>
-					<value>l2</value>
-					<value>l3</value>
-					<value>l4</value>
-				</list>
-			</property>
-			
-			<!-- 配置Set -->
-			<property name="set">
-				<set>
-					<value>s1</value>
-					<value>s2</value>
-					<value>s3</value>
-					<value>s4</value>
-				</set>
-			</property>
-			
-			<!-- 配置Map -->
-			<property name="map">
-				<map>
-					<entry key="k1" value="v1"></entry>
-					<entry key="k2" value="v2"></entry>
-					<entry key="k3" value="v3"></entry>
-				</map>
-			</property>
-			
-			<!-- 配置Properties -->
-			<property name="prop">
-				<props>
-					<prop key="p1">v1</prop>
-					<prop key="p2">v2</prop>
-					<prop key="p3">v3</prop>
-					<prop key="p4">v4</prop>
-				</props>
-			</property>
-		</bean>
-		
-		<!-- 配置DAO -->
-		<bean id="ud2" class="com.kostech.spring.test.User2Dao"></bean>
-		<!-- 接口实现类的配置 -->
-		<bean id="umi1" class="com.kostech.spring.test.UserManagerImpl1">
-			<property name="ud2" ref="ud2"></property>
-		</bean>
-		<!-- 构造器注入 -->
-		<bean id="umi2" class="com.kostech.spring.test.UserManagerImpl2">
-			<constructor-arg ref="ud2"></constructor-arg>
-		</bean>
-		
+	<!-- 启用AspectJ的支持 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+	<!-- 基于零配置的AspectJ的注解支持 -->
+	<bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"/>
+	
+	<!-- 配置包扫描器 -->
+	<context:component-scan base-package="com.kostech"></context:component-scan>
+
+	<!-- 引入外部的属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- 配置C3P0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="user" value="${user}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="driverClass" value="${driverClass}"></property>
+	</bean>
+
+
+	<!-- 配置事务管理器 -->
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 定义事务管理的模板 -->
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<!-- 配置属性 -->
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="timeout" value="2000"></property>
+	</bean>
+
+	<!-- 配置HelloWorld Bean -->
+	<bean id="helloWorld" class="com.kostech.spring.test.HelloWorld"
+		scope="singleton">
+		<property name="name" value="hepeng"></property>
+	</bean>
+
+	<!-- 配置User Bean -->
+	<bean id="user" class="com.kostech.spring.test.User">
+		<property name="id" value="1001"></property>
+		<property name="name" value="zhangsan"></property>
+		<property name="desc" value="好人"></property>
+	</bean>
+
+	<!-- 配置UserDAO Bean -->
+	<bean id="userDao" class="com.kostech.spring.test.UserDao"></bean>
+
+	<!-- 配置UserManager Bean -->
+	<bean id="userManager" class="com.kostech.spring.test.UserManager">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+
+	<!-- 注入Data数据类型测试 -->
+	<bean id="birthday" class="java.util.Date" scope="singleton"></bean>
+	<bean id="data" class="com.kostech.spring.test.Data">
+		<property name="id" value="1002"></property>
+		<property name="name" value="李四"></property>
+		<property name="birthday" ref="birthday"></property>
+
+		<!-- 配置数组 -->
+		<property name="array">
+			<array>
+				<value>a1</value>
+				<value>a2</value>
+				<value>a3</value>
+				<value>a4</value>
+			</array>
+		</property>
+
+		<!-- 配置List -->
+		<property name="list">
+			<list>
+				<value>l1</value>
+				<value>l2</value>
+				<value>l3</value>
+				<value>l4</value>
+			</list>
+		</property>
+
+		<!-- 配置Set -->
+		<property name="set">
+			<set>
+				<value>s1</value>
+				<value>s2</value>
+				<value>s3</value>
+				<value>s4</value>
+			</set>
+		</property>
+
+		<!-- 配置Map -->
+		<property name="map">
+			<map>
+				<entry key="k1" value="v1"></entry>
+				<entry key="k2" value="v2"></entry>
+				<entry key="k3" value="v3"></entry>
+			</map>
+		</property>
+
+		<!-- 配置Properties -->
+		<property name="prop">
+			<props>
+				<prop key="p1">v1</prop>
+				<prop key="p2">v2</prop>
+				<prop key="p3">v3</prop>
+				<prop key="p4">v4</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置DAO -->
+	<bean id="ud2" class="com.kostech.spring.test.User2Dao"></bean>
+	<!-- 接口实现类的配置 -->
+	<bean id="umi1" class="com.kostech.spring.test.UserManagerImpl1">
+		<property name="ud2" ref="ud2"></property>
+	</bean>
+	<!-- 构造器注入 -->
+	<bean id="umi2" class="com.kostech.spring.test.UserManagerImpl2">
+		<constructor-arg ref="ud2"></constructor-arg>
+	</bean>
+
 </beans>
