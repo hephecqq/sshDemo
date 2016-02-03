@@ -18,6 +18,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
+	<!--bean中多模块配置管理bean文件  -->
+	
+	<!-- <import resource="common/springCommon.xml"/>
+		<import resource="connection/SpringConnection.xml"></import>
+	-->
+	
 	<!-- 启用AspectJ的支持 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
