@@ -1,5 +1,9 @@
 package com.kostech.spring.test;
 
+import java.sql.SQLException;
+
+import org.hibernate.HibernateException;
+
 public class UserManagerImpl2 implements UserManagerI {
 
 	User2Dao ud2;
@@ -16,7 +20,7 @@ public class UserManagerImpl2 implements UserManagerI {
 	
 
 	@Override
-	public void addUser(User user) {
+	public void addUser(User user) throws HibernateException, SQLException {
 		System.out.println("UserManagerImpl2 add User  "+user);
 		ud2.addUser(user);
 	}
