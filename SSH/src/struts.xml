@@ -2,32 +2,29 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
-
+	
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="false" />
-
+    <constant name="struts.devMode" value="true" />
+	
     <package name="default" namespace="/" extends="struts-default">
 
-		<!-- 拦截器配置 -->
-		<interceptors>
-			<interceptor name="authority" class=""></interceptor>
-		</interceptors>
+		<action name="radioButtonAction"
+		class="com.kostech.action.RadioButtonAction" method="display">
+		<result name="none">radiobutton.jsp</result>
+		</action>
+		<action name="resultAction"
+		class="com.kostech.action.RadioButtonAction">
+			<result name="success">result.jsp</result>
+		</action>
 		
-        <default-action-ref name="index" />
-
-        <global-results>
-            <result name="error">/error.jsp</result>
-        </global-results>
-
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error"/>
-        </global-exception-mappings>
-
-        <action name="index">
-            <result type="redirectAction">/WEB-INF/views/index.jsp</result>
-        </action>
+		<action name="dateTagAction" 
+			class="com.kostech.action.DateTagAction" >
+			<result name="success">date.jsp</result>
+		</action>
+		
+		
     </package>
+
 
 </struts>
