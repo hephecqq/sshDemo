@@ -1,1 +1,9 @@
 /com/
+/applicationContext.xml
+/book.xml
+/config_en_US.properties
+/config_zh_CN.properties
+/hibernate.cfg.xml
+/log4j.properties
+/resources/
+/struts.xml
